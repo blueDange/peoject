@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>video</title>
+</head>
+<body>
+    <!-- 用于播放视频 -->
+    <!-- src：视频地址  controls:显示视频相关的控制器-->
+    <!-- 支持宽高属性  默认单位px-->
+    <!-- autoplay:自动播放 -->
+    <!-- loop:循环播放 -->
+    <!-- <video width="200" height="400" src="../assets/video/11.mp4" controls autoplay loop></video> -->
+
+    <!-- 海报帧：视频比较大 加载期间可以设置封面图 -->
+    <!-- 如果部设置海报帧 视频加载期间 时白屏状态 视频加载完后 -->
+
+    <!-- preload:预加载设定 三个值  none：不加载  auto:加载  metadata：只加载元信息  例如视频长度 -->
+    <!--  习惯设置none-->
+    <!-- <video src="../assets/video/33.mp4" width="300" poster="../assets/img/index/33.jpg" controls></video> -->
+    <div id="box">
+        <video src="../assets/video/22.mp4"></video>
+        <button>播放</button>
+        <button>暂停</button>
+        <button>静音</button>
+    </div>
+
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        const $video=$('video')
+
+        //播放
+        $("#box>button").eq(0).click(function(){
+            // 触发$videod的play方法
+            // 触发 引发：trigger 
+            $video.trigger('play')
+        })
+        // 暂停
+        $("#box>button").eq(1).click(function(){
+            // 暂停方法：pause
+            $video.trigger('pause')
+        })
+        // 静音
+        $("#box>button").eq(2).click(function(){
+            // 切换效果 改为反向值
+            const isMuted=$video.prop('muted')
+            $video.prop('muted',!isMuted)
+            // $video.prop('muted',true)
+        })
+    </script>
+</body>
+</html>

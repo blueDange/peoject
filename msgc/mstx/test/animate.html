@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/node_modules/animate.css/animate.min.css">
+</head>
+<body>
+    <!-- animate__animated 动画基础类 -->
+    <h1 class="animate__animated animate__bounce">hellow</h1>
+
+    <div>
+        <button>果冻效果</button>
+        <button></button>
+        <button></button>
+        <button></button>
+        <button></button>
+    </div>
+    <script src="/node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $('button').eq(0).click(function(){
+            $('h1').addClass('animate__rubberBand')
+        })
+        $('h1').on('animationend',function(){
+            $(this).removeClass('animate__rubberBand')
+        })
+    </script>
+</body>
+</html>

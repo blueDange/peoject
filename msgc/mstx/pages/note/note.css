@@ -1,0 +1,44 @@
+#container > #main {
+  width: var(--container-width);
+  margin: 0 auto;
+}
+#container > #main > .list {
+  position: relative;
+}
+#container > #main > .list > .list-item {
+  position: absolute;
+  width: calc((100% - 30px) / 4);
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+#container > #main > .list > .list-item:nth-child(4n) {
+  margin-right: 0;
+}
+#container > #main > .list > .list-item > img {
+  width: 100%;
+}
+#container > #main > .list > .list-item > div {
+  padding: 6px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+#container > #main > .list > .list-item > div > div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #666;
+  align-items: center;
+}
+#container > #main > .list > .list-item > div > div > div {
+  display: flex;
+  align-items: center;
+}
+#container > #main > .list > .list-item > div > div > div > img {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  margin-right: 5px;
+}/*# sourceMappingURL=note.css.map */

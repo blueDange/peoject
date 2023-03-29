@@ -1,0 +1,78 @@
+/* 基础样式 存放针对当前项目公共样式 */
+:root{
+    /* 主题色 */
+    --color-primary:#f75148;
+    /* 内容宽度 */
+    --container-width:1000px;
+    /* 头的高度 */
+    /* 多个位置使用此高度 修改即可生效 便于后期改需求 */
+    --header-heigth:80px;
+    /* 脚的高度 */
+    --footer-heigth:100px;
+
+}
+#header{
+    background-color: var(--color-primary);
+    height:var(--header-heigth);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    /* 定位方式的元素 常见层级 全局弹窗1000  头部100 普通10 */
+    z-index: 100;
+}
+body{
+    padding-top: var(--header-heigth);
+    /* 最小宽度 */
+    min-width: var(--container-width);
+}
+#footer{
+    height: var(--footer-heigth);
+    background-color: #222221;
+}
+/* 滚动栏 */
+::-webkit-scrollbar{
+    height: 8px;
+    width: 8px;
+}
+/* 滚动栏轨道 */
+::-webkit-scrollbar-track{
+    background-color: #ddd9cf;
+}
+/* 滚动栏滑块 */
+::-webkit-scrollbar-thumb{
+    background-color: #b3aa94;
+    border-radius: 6px;
+}
+.breadcrumb{
+    padding: 10px;
+    /* background-color: #eee; */
+}
+.hide{
+    display: none ;
+}
+/* 文字固定两行 */
+.line-2{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+}
+.nomore{
+    text-align: center;
+    padding: 20px;
+    font-size: 28px;
+    color: var(--color-primary);
+    display: none;
+}
+/* 精灵图使用 */
+i{
+    display: inline-block;
+}
+/* 文字一行 */
+.line-1{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

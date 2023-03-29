@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>swipr</title>
+    <link rel="stylesheet" href="../node_modules/swiper/swiper-bundle.min.css">
+    <style>
+        .swiper{
+            width: 1000px;
+            height: 400px;
+        }
+        .swiper-pagination-bullet{
+            width: 14px;
+            height: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!-- class名称固定的 -->
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="https://web.codeboy.com/xuezi/img/index/banner1.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://web.codeboy.com/xuezi/img/index/banner2.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://web.codeboy.com/xuezi/img/index/banner3.png" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="https://web.codeboy.com/xuezi/img/index/banner4.png" alt="">
+            </div>
+        </div>
+        <!-- 分页器 小圆点 -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <script src="/node_modules/swiper/swiper-bundle.min.js"></script>
+    <script>
+        // 参数1：把那个元素作为
+        // 参数2： 各种配置
+        var mySwiper=new Swiper('.swiper',{
+            // 指定分页器元素
+            pagination:{
+                el:'.swiper-pagination',
+                clickable:true,//可点击
+            },
+
+            // 是否循环滚动
+            loop:true,
+            // 滚动方向 竖直方向
+            // direction:'vertical'
+            // 特效：slide滑动 fade 淡入 cube方块 cards卡片 flip反转
+            effect:'slide',
+            // 自动切换 布尔类型 或对象类型
+            // autoplay:true,
+            autoplay:{
+                delay:2000,  //滚动间隔时长
+                disableOnInteraction:false,//用户触摸 是否要自动滚动
+                pauseOnMouseEnter:true//鼠标进入停止滚动
+            }
+        })
+    </script>
+</body>
+</html>

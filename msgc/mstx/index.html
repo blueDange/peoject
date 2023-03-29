@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>美食广场</title>
+    <!-- 先引入重置 在引入当前项目基础样式 -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/base.css">
+    <link rel="stylesheet" href="./node_modules/animate.css/animate.min.css">
+
+    <!-- 这两个js不操作dom 在头部引入没关系 -->
+    <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+    <!-- JQ脚本必须在最上方写, 防止其他文件中的代码 依赖JQ -->
+    <script src="./assets/js/common.js"></script>
+    <script src="./assets/js/request.js"></script>
+
+    <!-- 标签栏图片 -->
+    <link rel="shortcut icon" href="./assets/img/favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <!-- 访问服务器地址时 不指定文件名 自动访问index.html文件 -->
+    <div id="header"></div>
+
+    <div id="container"></div>
+
+    <div id="footer"></div>
+
+
+    <script>
+        $('#header').load('./components/header/header.html')
+        $('#footer').load('./components/footer/footer.html')
+
+
+        // 拿到page 传到class R中去 获取page属性中的值
+        //如果get获取的值是null 则改为home首页
+        const page=R.search('page') || 'home'
+        console.log('page:',page)
+    //    加载链接到的
+        $('#container').load(`./pages/${page}/${page}.html`)
+    </script>
+</body>
+</html>

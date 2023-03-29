@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="../node_modules/moment/moment.js"></script>
+    <script>
+        // moment:默认获取当前时间戳
+        // fomat：格式化时间戳为字符串
+        console.log(moment().format());
+
+        console.log(moment().format('YY'));
+        console.log(moment().format('MM'));
+
+        console.log(moment().format('YYYY年MM月DD日 HH:mm:ss'));
+
+        //指定日期
+        console.log(moment('20220911','YYYYMMDD').fromNow());
+
+        // 时间戳来指定时间
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 浏览器提供了api 可以吧数据存储在浏览器上
+    本地存储：localStorage--长期存储
+    会话存储：sessionStorage--临时存储
+    -->
+
+    <input type="text" placeholder="名字">
+    <button>记录</button>
+    <ul>
+        <li></li>
+        <li></li>
+    </ul>
+    <button id="clear">清空</button>
+    <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $('#clear').on('click',function(){
+            sessionStorage.clear()
+            localStorage.clear()
+            
+        })
+        $('button:contains(记录)').on('click',function(){
+            const kw=$(this).prev().val()
+            // 不存在增 存在改
+            sessionStorage.setItem('kw',kw)//临时
+            localStorage.setItem('kw',kw)//永久
+        })
+
+        // 查：getItem
+        $('li').eq(0).html(sessionStorage.getItem('kw'))
+        $('li').eq(1).html(localStorage.getItem('kw'))
+
+        // 与数据库功能相同 拥有增删改查4个功能
+        // 增：setItem(属性名，值)
+        // sessionStorage.setItem('sb','随便')
+        // localStorage.setItem('sb','随便')
+    </script>
+</body>
+</html>

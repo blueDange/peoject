@@ -1,0 +1,51 @@
+#container {
+  background-color: #f6f6f6;
+}
+#container > #main {
+  width: var(--container-width);
+  margin: 0 auto;
+}
+#container > #main > .list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+#container > #main > .list > .list-item {
+  width: calc((100% - 30px) / 4);
+  background-color: white;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+#container > #main > .list > .list-item:hover > div > span {
+  color: var(--color-primary);
+}
+#container > #main > .list > .list-item > img {
+  width: 100%;
+}
+#container > #main > .list > .list-item > div {
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90px;
+}
+#container > #main > .list > .list-item > div > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+#container > #main > .list > .list-item > div > div > span:first-child {
+  color: red;
+  font-size: 24px;
+}
+#container > #main > .list > .list-item > div > div > span:last-child {
+  font-size: 12px;
+  color: #888;
+}
+#container > #main #nomore {
+  font-size: 25px;
+  color: var(--color-primary);
+  text-align: center;
+  padding: 30px;
+  display: none;
+}/*# sourceMappingURL=mall.css.map */

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        sessionStorage.setItem('one','1')
+        sessionStorage.setItem('two','2')
+        sessionStorage.setItem('three','3')
+        sessionStorage.setItem('four','4')
+        sessionStorage.setItem('five','5')
+
+        // 指定删除
+        sessionStorage.removeItem('three')
+
+        // 值只允许字符串 
+        emp=[]
+        // 对象需要转json字符串来储存
+        sessionStorage.setItem('emp',JSON.stringify(emp))
+        // 读取时需要用json解析成对象
+        var emp1=sessionStorage.getItem('emp')
+    </script>
+</body>
+</html>

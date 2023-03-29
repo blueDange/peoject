@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>精灵图</title>
+    <style>
+        #box{
+            background-color: gray;
+            width: 200px;
+            height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #box>i{
+            background-image: url('../assets/img/979.png');
+            background-position: -48px -65px;
+            width: 122px;
+            height: 153px;
+            /* i标签是行元素 不能设置宽高 改为行内块 */
+            display: inline-block;
+            transform: scale(0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- 性能优化 ：和并请求 -->
+    <!-- 使用时通过背景图 配合i标签 -->
+    <div id="box"> 
+        <i></i>
+    </div>
+</body>
+</html>
