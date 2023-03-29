@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/reset.css" />
+  <link rel="stylesheet" href="./css/nprogress.css">
+  <link rel="stylesheet" href="./css/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="./css/index.css" />
+  <title>demo</title>
+</head>
+
+<body>
+  <div class="loader"></div>
+  <div class="shadow"></div>
+  </div>
+  <div class="background">
+    <header>
+      <div class="head-left">
+        <a>物流汇总看板</a>
+      </div>
+      <div class="head-content">
+        <a href="#"></a>
+      </div>
+      <div class="head-right">
+        <div class="head-right-time">
+          <div class="data"></div>
+          <div class="week"></div>
+          <div class="time"></div>
+        </div>
+        <div class="head-right-bottom">
+          <i></i>
+          <div id="hover">
+            <div>云码资源优选</div>
+            <div></div>
+          </div>
+          <div>
+            <button>退出</button>
+          </div>
+        </div>
+        <div class="mark">
+          <div>云码资源淘宝店</div>
+          <div>可视化模板精选</div>
+          <div>优质资源</div>
+        </div>
+      </div>
+    </header>
+    <hr />
+    <div class="container">
+      <article>
+        <section class="left">
+          <div class="left-first">
+            <div class="left-first-title">
+              <div class="left-first-yellow"></div>
+              <div>今日运单数量</div>
+            </div>
+            <hr />
+            <div class="left-first-view">
+              <div>
+                <h3>正常量</h3>
+                <span class="span-normal">80单</span>
+              </div>
+              <div class="normal"></div>
+            </div>
+            <div class="left-first-view">
+              <div>
+                <h3>临时单</h3>
+                <span class="span-temporary">15单</span>
+              </div>
+              <div class="temporary"></div>
+            </div>
+            <div class="left-first-view">
+              <div>
+                <h3>异常单</h3>
+                <span class="span-anomaly">5单</span>
+              </div>
+              <div class="anomaly"></div>
+            </div>
+          </div>
+          <div class="left-second">
+            <div class="left-second-title">
+              <div class="left-second-green"></div>
+              <div>各阶段平均用时统计</div>
+            </div>
+            <hr />
+            <div class="left-second-container">
+              <div>
+                <div>下单...配车</div>
+                <div>
+                  <span>3.4</span>
+                  <span>秒</span>
+                </div>
+              </div>
+              <div>
+                <div>配车...装货</div>
+                <div>
+                  <span>24</span>
+                  <span>分钟</span>
+                </div>
+              </div>
+              <div>
+                <div>到厂卸货</div>
+                <div>
+                  <span>14</span>
+                  <span>分钟</span>
+                </div>
+              </div>
+              <div>
+                <div>装回收器具</div>
+                <div>
+                  <span>7</span>
+                  <span>分钟</span>
+                </div>
+              </div>
+              <div>
+                <div>卸回收器具</div>
+                <div>
+                  <span>5</span>
+                  <span>分钟</span>
+                </div>
+              </div>
+            </div>
+            <hr />
+          </div>
+          <div class="left-third">
+            <div class="left-third-title">
+              <div class="left-third-blue"></div>
+              <div>人员信息</div>
+            </div>
+            <hr />
+            <div class="left-third-container">
+              <div>
+                <div>
+                  <span>领导:</span>
+                  <span>5</span>
+                  <span>人</span>
+                </div>
+                <div>
+                  <span>司机:</span>
+                  <span>36</span>
+                  <span>人</span>
+                </div>
+              </div>
+
+              <div>
+                <div>
+                  <span>门卫:</span>
+                  <span>6</span>
+                  <span>人</span>
+                </div>
+                <div>
+                  <span>器具中心:</span>
+                  <span>15</span>
+                  <span>人</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <span>派单员:</span>
+                  <span>20</span>
+                  <span>人</span>
+                </div>
+                <div>
+                  <span>售后卸载:</span>
+                  <span>36</span>
+                  <span>人</span>
+                </div>
+              </div>
+              <div>
+                <div>
+                  <span>财务:</span>
+                  <span>5</span>
+                  <span>人</span>
+                </div>
+                <div>
+                  <span>售后回收:</span>
+                  <span>36</span>
+                  <span>人</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="content">
+          <div>
+            <div id="content-map">地图</div>
+            <div class="content-bottom-title">
+              <div class="content-bottom-blue"></div>
+              <span>月运单数量统计图</span>
+              <span>(2017年12月)</span>
+            </div>
+            <div class="content-bottom">柱形图</div>
+          </div>
+        </section>
+        <aside class="right">
+          <div class="right-order">
+            <div class="right-order-title">
+              <div class="right-order-yellow"></div>
+              <div>总计运单数</div>
+            </div>
+            <div class="right-order-content">
+              <span>368082</span>
+              <span>单</span>
+            </div>
+          </div>
+
+          <div class="information">
+            <div class="information-title">
+              <div class="information-green"></div>
+              <span>基本信息</span>
+            </div>
+            <hr />
+            <div class="information-content">
+              <div>
+                <div>32</div>
+                <div>在途车辆</div>
+              </div>
+              <div>
+                <div>65</div>
+                <div>出车次数</div>
+              </div>
+              <div>
+                <div>100</div>
+                <div>今日订单</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="state">
+            <div class="state-title">
+              <div class="state-title-green"></div>
+              <span>运单状态</span>
+            </div>
+            <hr />
+            <div class="state-content">
+              <span>订单编号</span>
+              <span>使用时间</span>
+              <span>满载率</span>
+            </div>
+            <div class="dotted"></div>
+            <!-- 轮播图 -->
+            <div class="swiper swiper-no-swiping">
+              <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div class="bigbox">
+                      <div class="box" id="div-box">
+                        <div class="load" id="load"></div>
+                      </div>
+                      <div class="result" id="result"></div>
+                    </div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div class="bigbox">
+                      <div class="box" id="div-box">
+                        <div class="load2" id="load2"></div>
+                      </div>
+                      <div class="result" id="result2"></div>
+                    </div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div class="bigbox">
+                      <div class="box" id="div-box">
+                        <div class="load3" id="load3"></div>
+                      </div>
+                      <div class="result" id="result3"></div>
+                    </div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div>>>>>>></div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div>>>>>>></div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div>>>>>>></div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div>>>>>>></div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div>>>>>>></div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div>>>>>>></div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+                <div class="swiper-slide">
+                  <div class="slide-item">
+                    <div>ZC1712120023</div>
+                    <div>2小时14分</div>
+                    <div>>>>>>></div>
+                  </div>
+                  <div class="dotted"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </article>
+    </div>
+  </div>
+  <script src="./js/moment.js"></script>
+  <script src="./js/nprogress.js"></script>
+  <script src="./js/swiper-bundle.min.js"></script>
+  <script src="./js/echarts.js"></script>
+  <script type="text/javascript">
+    window._AMapSecurityConfig = {
+      securityJsCode: 'b22e9543a7f4fe9b21bdf605df417629',
+    }
+  </script>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=e5fc8ab5445cc18255d9d6f4268913c8"></script>
+  <script src="https://webapi.amap.com/loader.js"></script>
+  <script src="./js/index.js"></script>
+</body>
+
+</html>
