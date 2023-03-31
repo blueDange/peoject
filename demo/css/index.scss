@@ -30,7 +30,9 @@ body {
   background-attachment: fixed;
 }
 
-.background {}
+.background {
+  display: none;
+}
 
 @keyframes back {
   from {

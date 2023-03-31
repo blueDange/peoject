@@ -1,0 +1,28 @@
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    border-top-width: 7px;
+    transform: rotate(180deg);
+  }
+  100% {
+    border-top-width: 9px;
+    transform: rotate(360deg);
+  }
+}
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  animation: spin 2s linear infinite;
+  border: 5px dotted transparent;
+  border-top: 5px dotted var(--color-primary);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+}/*# sourceMappingURL=loading.css.map */
