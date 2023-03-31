@@ -1,4 +1,22 @@
 window.onload = function () {
+  // 数字动态
+  let addNum = document.querySelector('#addNum')
+  function add() {
+    let i = 300000
+    var timer = setInterval(() => {
+      if (i < 368082) {
+        i += 1002
+
+        addNum.innerText = i
+      }
+      if (i >= 368082) {
+        clearInterval(timer)
+      }
+    }, 40)
+  }
+  add()
+
+  // 鼠标移入移除显示隐藏盒子
   let hover = document.querySelector('#hover')
   let mark = document.querySelector('.mark')
   hover.onmouseover = function () {
@@ -151,7 +169,7 @@ window.onload = function () {
       {
         // show: true,
         type: 'category',
-        data: ['80单'],
+        data: [''],
         axisTick: {
           show: false,
         },
@@ -160,7 +178,7 @@ window.onload = function () {
         },
       },
       {
-        data: ['80单'],
+        data: [],
         // show: true,
         // 不显示y轴的线
         axisLine: {
@@ -247,7 +265,7 @@ window.onload = function () {
       {
         // show: true,
         type: 'category',
-        data: ['80单'],
+        data: [''],
         axisTick: {
           show: false,
         },
@@ -256,7 +274,7 @@ window.onload = function () {
         },
       },
       {
-        data: ['15单'],
+        data: [],
         // show: true,
         // 不显示y轴的线
         axisLine: {
@@ -343,7 +361,7 @@ window.onload = function () {
       {
         // show: true,
         type: 'category',
-        data: ['5单'],
+        data: [''],
         axisTick: {
           show: false,
         },
@@ -352,7 +370,7 @@ window.onload = function () {
         },
       },
       {
-        data: ['80单'],
+        data: [],
         // show: true,
         // 不显示y轴的线
         axisLine: {
@@ -417,75 +435,96 @@ window.onload = function () {
     myChart.resize()
   })
 
-  // 高的地图
+  //高德地图
+  const map = new AMap.Map('content-map', {
+    resizeEnable: true,
+    zoom: 14,
+    mapStyle: 'amap://styles/darkblue',
+    center: [121.605907, 38.888851],
+  })
+  addMarker()
 
-  // 变成手
+  function addMarker() {
+    var marker1 = new AMap.Marker({
+      map: map,
+      position: new AMap.LngLat(121.592307, 38.883851), // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+      icon: 'img/s_ico4.png',
+    })
+    var marker2 = new AMap.Marker({
+      map: map,
+      position: new AMap.LngLat(121.613907, 38.882851), // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+      icon: 'img/s_ico4.png',
+    })
+    var marker3 = new AMap.Marker({
+      map: map,
+      position: new AMap.LngLat(121.60907, 38.888851), // 经纬度对象，也可以是经纬度构成的一维数组[116.39, 39.9]
+      icon: 'img/s_ico4.png',
+    })
 
-  var map = new AMap.Map('content-map', {
-    mapStyle: 'amap://styles/darkblue', //设置地图的显示样式
-    zoom: 11, //级别
-    center: [116.397428, 39.90923], //中心点坐标
-    viewMode: '3D', //使用3D视图
+    var markerList = [marker1, marker2, marker3]
+    map.add(markerList)
+
+    marker1.content =
+      '<p>ZC1712120023</p>' +
+      '<p>起点：配件A厂</p>' +
+      '<p>终点：美的冰箱公司</p>' +
+      '<p>满载率：95%</p>' +
+      '<p>已使用时间：2小时15分</p>'
+    marker1.on('click', markerClick)
+
+    marker2.content =
+      '<p>ZC1712120023</p>' +
+      '<p>起点：配件A厂</p>' +
+      '<p>终点：美的冰箱公司</p>' +
+      '<p>满载率：95%</p>' +
+      '<p>已使用时间：2小时15分</p>'
+    marker2.on('click', markerClick)
+
+    marker3.content =
+      '<p>ZC1712120023</p>' +
+      '<p>起点：配件A厂</p>' +
+      '<p>终点：美的冰箱公司</p>' +
+      '<p>满载率：95%</p>' +
+      '<p>已使用时间：2小时15分</p>'
+    marker3.on('click', markerClick)
+  }
+  // 创建 infoWindow 实例
+  var infoWindow = new AMap.InfoWindow({
+    offset: new AMap.Pixel(6, -36),
+    content: '1', // 可以静态获取信息
   })
 
-  // 点标记
-  var marker = new AMap.Marker({
-    position: new AMap.LngLat(116.39, 39.9),
-    offset: new AMap.Pixel(-10, -10),
-    icon: '../img/s_ico4.png', // 添加 Icon 图标 URL
-    title: '北京',
-  })
-
-  map.add(marker)
-
-  var marker1 = new AMap.Marker({
-    position: new AMap.LngLat(116.2, 39.9),
-    offset: new AMap.Pixel(-13, -74),
-    icon: '../img/s_ico4.png', // 添加 Icon 图标 URL
-    title: '北京',
-  })
-
-  map.add(marker1)
-
-  var marker2 = new AMap.Marker({
-    position: new AMap.LngLat(116.3, 39.9),
-    offset: new AMap.Pixel(-14, -29),
-    icon: '../img/s_ico4.png', // 添加 Icon 图标 URL
-    title: '北京',
-  })
-
-  map.add(marker2)
-  //自定义鼠标样式图标
-  function switchCursor(target) {
-    var value = target.value
-    map.setDefaultCursor(value)
+  function markerClick(e) {
+    // !设置信息窗体内容，可通过该函数动态更新信息窗体中的信息
+    // !是动态获取
+    infoWindow.setContent(e.target.content)
+    // !在地图的指定位置打开信息窗体
+    infoWindow.open(map, e.target.getPosition())
   }
 
+  // ?清除窗口
+  map.on('click', function () {
+    map.clearInfoWindow()
+  })
+
   // 轮播图
+
   var mySwiper = new Swiper('.swiper', {
+    speed: 500,
     slidesPerView: 5,
     slidesPerGroup: 1,
     loopFillGroupWithBlank: true,
     direction: 'vertical', // 垂直切换选项
     // loop: true, // 循环模式选项
     autoplay: { pauseOnMouseEnter: true },
-
-    // 如果需要分页器
-    pagination: {
-      el: '.swiper-pagination',
-    },
-
-    // 如果需要前进后退按钮
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-
-    // 如果需要滚动条
-    scrollbar: {
-      el: '.swiper-scrollbar',
-    },
   })
+  //鼠标移入停止播放，鼠标离开  继续轮播
+  mySwiper.el.onmouseover = function () {
+    mySwiper.autoplay.stop()
+  }
+  mySwiper.el.onmouseleave = function () {
+    mySwiper.autoplay.start()
+  }
 
   // 处理时间
   var now = moment().toDate() //Mon Jul 06 2020 13:50:51 GMT+0800 (中国标准时间)
@@ -557,7 +596,7 @@ window.onload = function () {
     }
 
     // }
-  }, 30)
+  }, 40)
 
   // 2.
   var load2 = document.getElementById('load2')
@@ -567,14 +606,14 @@ window.onload = function () {
     // i+=1;
     if (i2 < 40) {
       i2 += 1
-      load2.style.width = i + 4 + '%'
-      result2.innerText = i + '%'
+      load2.style.width = i2 + 4 + '%'
+      result2.innerText = i2 + '%'
     }
     if (i2 >= 30) {
       clearInterval(timer)
     }
     // }
-  }, 30)
+  }, 40)
 
   // 3.
   var load3 = document.querySelector('#load3')
@@ -584,12 +623,148 @@ window.onload = function () {
     // i+=1;
     if (i3 < 10) {
       i3 += 1
-      load3.style.width = i + 4 + '%'
-      result3.innerText = i + '%'
+      load3.style.width = i3 + 4 + '%'
+      result3.innerText = i3 + '%'
     }
     if (i3 >= 10) {
       clearInterval(timer)
     }
     // }
-  }, 30)
+  }, 40)
+
+  // ! 4.
+  function loadFour() {
+    var load4 = document.querySelector('#load4')
+    var result4 = document.getElementById('result4')
+    let i = 0
+    var timer = setInterval(function () {
+      // for(i=0;i<=100;i++){
+      // i+=1;
+      if (i < 60) {
+        i += 1
+        load4.style.background = 'red'
+        load4.style.width = i + 4 + '%'
+        result4.innerText = i + '%'
+      }
+      if (i >= 60) {
+        clearInterval(timer)
+      }
+      // }
+    }, 40)
+  }
+  loadFour()
+
+  // !5.
+  function loadFive() {
+    var load5 = document.querySelector('#load5')
+    var result5 = document.getElementById('result5')
+    let i = 0
+    var timer = setInterval(function () {
+      // for(i=0;i<=100;i++){
+      // i+=1;
+      if (i < 20) {
+        i += 1
+        load5.style.background = 'orange'
+        load5.style.width = i + 4 + '%'
+        result5.innerText = i + '%'
+      }
+      if (i >= 20) {
+        clearInterval(timer)
+      }
+      // }
+    }, 40)
+  }
+
+  loadFive()
+
+  // !6.
+  function loadSix() {
+    var load6 = document.querySelector('#load6')
+    var result6 = document.getElementById('result6')
+    let i = 0
+    var timer = setInterval(function () {
+      // for(i=0;i<=100;i++){
+      // i+=1;
+      if (i < 95) {
+        i += 1
+        load6.style.background = 'green'
+        load6.style.width = i + 4 + '%'
+        result6.innerText = i + '%'
+      }
+      if (i >= 95) {
+        clearInterval(timer)
+      }
+      // }
+    }, 40)
+  }
+
+  loadSix()
+
+  // !7.
+  function loadSeven() {
+    var load7 = document.querySelector('#load7')
+    var result7 = document.getElementById('result7')
+    let i = 0
+    var timer = setInterval(function () {
+      // for(i=0;i<=100;i++){
+      // i+=1;
+      if (i < 65) {
+        i += 1
+        load7.style.background = 'skyBlue'
+        load7.style.width = i + 4 + '%'
+        result7.innerText = i + '%'
+      }
+      if (i >= 65) {
+        clearInterval(timer)
+      }
+      // }
+    }, 40)
+  }
+  loadSeven()
+
+  // !8.
+  function loadEight() {
+    var load8 = document.querySelector('#load8')
+    var result8 = document.getElementById('result8')
+    let i = 0
+    var timer = setInterval(function () {
+      // for(i=0;i<=100;i++){
+      // i+=1;
+      if (i < 15) {
+        i += 1
+        load8.style.background = 'pink'
+        load8.style.width = i + 4 + '%'
+        result8.innerText = i + '%'
+      }
+      if (i >= 15) {
+        clearInterval(timer)
+      }
+      // }
+    }, 40)
+  }
+
+  loadEight()
+
+  // !9.
+  function loadNine() {
+    var load9 = document.querySelector('#load9')
+    var result9 = document.getElementById('result9')
+    let i = 0
+    var timer = setInterval(function () {
+      // for(i=0;i<=100;i++){
+      // i+=1;
+      if (i < 75) {
+        i += 1
+        load9.style.background = 'orange'
+        load9.style.width = i + 4 + '%'
+        result9.innerText = i + '%'
+      }
+      if (i >= 75) {
+        clearInterval(timer)
+      }
+      // }
+    }, 40)
+  }
+
+  loadNine()
 }
