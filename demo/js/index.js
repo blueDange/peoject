@@ -17,14 +17,17 @@ window.onload = function () {
   add()
 
   // 鼠标移入移除显示隐藏盒子
-  let hover = document.querySelector('#hover')
-  let mark = document.querySelector('.mark')
-  hover.onmouseover = function () {
-    mark.style.display = 'block'
+  function bbooxx() {
+    let hover = document.querySelector('#hover')
+    let mark = document.querySelector('.mark')
+    hover.onmouseover = function () {
+      mark.style.display = 'block'
+    }
+    hover.onmouseout = function () {
+      mark.style.display = 'none'
+    }
   }
-  hover.onmouseout = function () {
-    mark.style.display = 'none'
-  }
+  bbooxx()
 
   // 今日运单数量
 
