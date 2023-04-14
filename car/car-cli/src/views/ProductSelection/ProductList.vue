@@ -69,10 +69,19 @@ export default {
       pubsub.publish('sendId', params)
       this.$router.push('/com/detail')
     },
+    // 模糊查询
+    blur(params) {
+      httpApi.prosetApi.prosettype(params).then(res => {
+        // console.log(res)
+        this.list = res.data.data
+        // console.log(this.list.pno)
+        // this.pageChange(this.list.pno)
+      })
+    },
     // 当前页码
     pageChange(pno) {
       this.cpage = pno
-      console.log('==', pno)
+      // console.log('==', pno)
       this.list.pno = pno
       // 查询全部是0
       if (this.type == 0) {
@@ -84,12 +93,11 @@ export default {
     },
     // 查询所有
     typeList(type) {
-      console.log(type)
       if (type == 0) {
         let params = { pno: this.list.pno, count: this.list.count }
         httpApi.prosetApi.prosetlist(params).then(res => {
           this.list = res.data.data
-          console.log(res.data)
+          // console.log(res.data)
         })
       } else {
         let params = {
@@ -99,28 +107,9 @@ export default {
         }
         this.cpage = 1
         // 模糊查询
-        httpApi.prosetApi.prosettype(params).then(res => {
-          console.log(res)
-          this.list = res.data.data
-          console.log(this.list.pno)
-          // this.pageChange(this.list.pno)
-        })
+        this.blur(params)
       }
     },
-
-    // mohuList(type) {
-    //   let params = {
-    //     pno: this.list.pno,
-    //     count: 6,
-    //     type: type,
-    //   }
-    //   httpApi.prosetApi.prosettype(params).then(res => {
-    //     console.log(res)
-    //     this.list = res.data.data
-    //     console.log(this.list.pno)
-    //     this.pageChange(this.list.pno)
-    //   })
-    // },
   },
   mounted() {
     // 页面加载时加载所有列表
@@ -128,10 +117,20 @@ export default {
     pubsub.subscribe('typeChange', (_, b) => {
       // 消息订阅-类型
       this.type = parseInt(b)
-      console.log('有人发布了消息', this.type)
+      // console.log('收到消息', this.type)
       this.list.pno = 1
       this.typeList(this.type)
     })
+    //! 从主页跳转过来
+    let hometype = this.$route.query.hometype
+    let params = {
+      pno: this.list.pno,
+      count: 6,
+      type: hometype,
+    }
+    this.cpage = 1
+    // 模糊查询
+    this.blur(params)
   },
 }
 </script>

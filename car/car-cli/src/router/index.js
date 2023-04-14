@@ -35,7 +35,7 @@ const routes = [
         },
         scrollBehavior() {
           return { x: 0, y: 0 }
-        }
+        },
       },
       {
         path: 'list',
@@ -49,7 +49,7 @@ const routes = [
         },
         scrollBehavior() {
           return { x: 0, y: 0 }
-        }
+        },
       },
     ],
   },
@@ -66,7 +66,7 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
   {
     path: '/success-deta/:id',
@@ -80,7 +80,7 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
   {
     path: '/about',
@@ -94,7 +94,7 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
   {
     path: '/contact',
@@ -108,7 +108,7 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
   {
     path: '/newsList',
@@ -122,7 +122,7 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
 
   {
@@ -137,7 +137,7 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
   {
     path: '/newscenter',
@@ -151,7 +151,7 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
   {
     path: '/login',
@@ -169,7 +169,7 @@ const routes = [
     component: () => import('../views/user/intention.vue'),
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
   {
     path: '/initialPlan',
@@ -183,7 +183,7 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
   {
     path: '/latePromotion',
@@ -197,14 +197,23 @@ const routes = [
     },
     scrollBehavior() {
       return { x: 0, y: 0 }
-    }
+    },
   },
 ]
 
 const router = new VueRouter({
+  routes,
+
   mode: 'history',
   base: process.env.BASE_URL,
-  routes,
+  // ? 下方代码是为了解决路由跳转后不在顶部展示
+  scrollBehavior(to, from, savedPosition) {
+    // 期望滚动到哪个位置
+    return {
+      x: 0,
+      y: 0,
+    }
+  },
 })
 
 export default router
