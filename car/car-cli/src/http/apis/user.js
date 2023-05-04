@@ -1,14 +1,24 @@
 /**该文件仅产品选购相关的接口API */
-import myaxios from '../MyAxios'
+import myaxios from "../MyAxios";
 //引入路径前缀
-import BASEURL from '../BaseUrl'
-const { CARURL } = BASEURL
+import BASEURL from "../BaseUrl";
+const { CARURL } = BASEURL;
 
-const userApi={
-// 提交购买意向
-intention(params) {
-        let url = CARURL + '/user/intention'
-        return myaxios.post(url, params)
-    },
-}
-export default userApi
+const userApi = {
+  // 提交购买意向
+  intention(params) {
+    let url = CARURL + "/user/intention";
+    return myaxios.post(url, params);
+  },
+  // 登录
+  login(params) {
+    let url = CARURL + "/user/login";
+    return myaxios.post(url, params);
+  },
+  // 注册
+  register(params) {
+    let url = CARURL + "/user/register";
+    return myaxios.post(url, params);
+  },
+};
+export default userApi;

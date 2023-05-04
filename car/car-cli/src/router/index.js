@@ -7,6 +7,11 @@ Vue.use(VueRouter)
 const routes = [
   {
     path: '/',
+    name: 'home1',
+    component: HomeView,
+  },
+  {
+    path: '/home',
     name: 'home',
     component: HomeView,
   },
@@ -33,9 +38,6 @@ const routes = [
             { name: '产品选购', path: '/com/list' },
           ],
         },
-        scrollBehavior() {
-          return { x: 0, y: 0 }
-        },
       },
       {
         path: 'list',
@@ -46,9 +48,6 @@ const routes = [
             { name: '主页', path: '/' },
             { name: '产品选购', path: '/com/list' },
           ],
-        },
-        scrollBehavior() {
-          return { x: 0, y: 0 }
         },
       },
     ],
@@ -64,9 +63,6 @@ const routes = [
         { name: '成功案例', path: '/success-list' },
       ],
     },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
-    },
   },
   {
     path: '/success-deta/:id',
@@ -77,9 +73,6 @@ const routes = [
         { name: '主页', path: '/' },
         { name: '成功案例', path: '/success-list' },
       ],
-    },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
     },
   },
   {
@@ -92,9 +85,6 @@ const routes = [
         { name: '关于我们', path: '/about' },
       ],
     },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
-    },
   },
   {
     path: '/contact',
@@ -105,9 +95,6 @@ const routes = [
         { name: '主页', path: '/' },
         { name: '联系我们', path: '/contact' },
       ],
-    },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
     },
   },
   {
@@ -120,13 +107,10 @@ const routes = [
         { name: '新闻资讯', path: '/newsList' },
       ],
     },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
-    },
   },
 
   {
-    path: '/newsdetail',
+    path: '/newsdetail/:id',
     name: 'newsdetail',
     component: () => import('../views/news/newsDetail.vue'),
     meta: {
@@ -134,9 +118,6 @@ const routes = [
         { name: '主页', path: '/' },
         { name: '新闻资讯', path: '/newslist' },
       ],
-    },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
     },
   },
   {
@@ -148,9 +129,6 @@ const routes = [
         { name: '主页', path: '/' },
         { name: '新闻资讯', path: '/newslist' },
       ],
-    },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
     },
   },
   {
@@ -167,9 +145,6 @@ const routes = [
     path: '/intention',
     name: 'intention',
     component: () => import('../views/user/intention.vue'),
-    scrollBehavior() {
-      return { x: 0, y: 0 }
-    },
   },
   {
     path: '/initialPlan',
@@ -181,9 +156,6 @@ const routes = [
         { name: '前期规划', path: '/initialPlan' },
       ],
     },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
-    },
   },
   {
     path: '/latePromotion',
@@ -194,9 +166,6 @@ const routes = [
         { name: '主页', path: '/' },
         { name: '后期推广', path: '/latePromotion' },
       ],
-    },
-    scrollBehavior() {
-      return { x: 0, y: 0 }
     },
   },
 ]

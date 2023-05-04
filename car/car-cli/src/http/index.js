@@ -2,9 +2,11 @@
 import successApi from "./apis/successApi";
 import prosetApi from "./apis/productApi";
 import userApi from "./apis/user";
+import newsApi from "./apis/news";
 const httpApi = {
   successApi,
   prosetApi,
-  userApi
+  userApi,
+  newsApi
 };
 export default httpApi;

@@ -12,7 +12,7 @@
           separator-class="el-icon-arrow-right"
         >
           <el-breadcrumb-item v-for="(item, i) in $route.meta.nav" :key="i"
-            ><router-link :to="item.path">
+            ><router-link @click="refresh()" :to="item.path">
               {{ item.name }}</router-link
             ></el-breadcrumb-item
           >
@@ -32,6 +32,11 @@ export default {
   props: {
     avatar: {
       type: String,
+    },
+  },
+  methods: {
+    refresh() {
+      alert(1)
     },
   },
 }

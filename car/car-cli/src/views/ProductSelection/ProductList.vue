@@ -8,7 +8,7 @@
           <a @click="$router.push('/com/detail')">
             <img
               @click="
-                $router.push({
+                $router.go({
                   path: '/com/detail',
                   query: { id: item.sid, title: item.title },
                 })
@@ -31,6 +31,7 @@
         </div>
       </div>
     </div>
+
     <!-- 页码 -->
     <div class="pagination">
       <el-pagination
@@ -41,6 +42,8 @@
         :page-size="list.count"
         @current-change="pageChange"
         :current-page="cpage"
+        prev-text="上一页"
+        next-text="下一页"
       >
       </el-pagination>
     </div>
@@ -65,6 +68,7 @@ export default {
     }
   },
   methods: {
+    // 给详情页发送id
     sendId(params) {
       pubsub.publish('sendId', params)
       this.$router.push('/com/detail')
@@ -73,6 +77,7 @@ export default {
     blur(params) {
       httpApi.prosetApi.prosettype(params).then(res => {
         // console.log(res)
+        // console.log(blur)
         this.list = res.data.data
         // console.log(this.list.pno)
         // this.pageChange(this.list.pno)
@@ -81,14 +86,19 @@ export default {
     // 当前页码
     pageChange(pno) {
       this.cpage = pno
-      // console.log('==', pno)
+      // console.log('页面', pno)
       this.list.pno = pno
       // 查询全部是0
       if (this.type == 0) {
         this.typeList(0)
       } else {
         // 模糊查询
-        this.typeList(this.type)
+        let params = {
+          pno: this.list.pno,
+          count: 6,
+          type: this.type,
+        }
+        this.blur(params)
       }
     },
     // 查询所有
@@ -117,9 +127,11 @@ export default {
     pubsub.subscribe('typeChange', (_, b) => {
       // 消息订阅-类型
       this.type = parseInt(b)
-      // console.log('收到消息', this.type)
+      console.log('收到消息', this.type)
       this.list.pno = 1
       this.typeList(this.type)
+      // console.log('type', this.type)
+      // this.type = 0
     })
     //! 从主页跳转过来
     let hometype = this.$route.query.hometype

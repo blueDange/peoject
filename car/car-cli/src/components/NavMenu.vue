@@ -32,11 +32,21 @@
             v-model="keyword"
             placeholder="输入关键词"
             size="mini"
+            list="data"
           >
             <i @click="search(keyword)" class="el-icon-search" slot="suffix"></i
           ></el-input>
+          <datalist id="data">
+            <option value="房车"></option>
+            <option value="全国"></option>
+            <option value="好"></option>
+            <option value="营地"></option>
+          </datalist>
         </div>
-        <div class="user" v-if="userInfo">用户{{ userInfo.uname }}</div>
+        <div class="user" v-if="userInfo">
+          用户：{{ userInfo.uname }}
+          <div class="exit" @click="exitInfo">退出登录</div>
+        </div>
         <div class="user" v-else @click="$router.push('/login')">登录</div>
       </div>
     </div>
@@ -44,34 +54,50 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState } from 'vuex'
 export default {
   data() {
     return {
-      keyword: "",
-    };
+      keyword: '',
+    }
   },
   computed: {
     // mapState将开放vue中保存的user对象到当前组件的计算属性
-    ...mapState(["userInfo"]),
+    ...mapState(['userInfo']),
+  },
+  watch: {
+    keyword(newval, oldval) {
+      console.log('关键词变化了', newval)
+      this.keyword = newval
+      // this.search(newval);
+    },
   },
   methods: {
     search(keyword) {
-      if (keyword == "") {
+      // console.log(1111);
+      if (keyword == '') {
         this.$message({
           showClose: true,
-          message: "请输入至少两个字符串",
-          type: "error",
-        });
+          message: '请输入至少两个字符串',
+          type: 'error',
+        })
       } else {
-        this.$router.push({
-          path: "/newscenter",
-          query: { keyword },
-        });
+        this.$router.push({ path: '/newscenter', query: { keyword } }, () => {})
       }
+      if (this.$route.name == 'newscenter') {
+        // 如果当前在newscenter页面 点击搜索刷新页面
+        location.reload()
+        // this.$router.go(0);
+        // console.log(222);
+      }
+      console.log(this.$route.name)
+    },
+    exitInfo() {
+      this.$store.commit('loginout')
+      this.$router.go('home')
     },
   },
-};
+}
 </script>
 
 <style lang="scss" scoped>
@@ -101,15 +127,32 @@ export default {
     border-radius: 20px;
   }
   i {
-    margin: 7px 3px;
+    margin: 8px 3px;
   }
 }
 .el-menu-item:hover {
   color: #5cb95f !important;
 }
 .user {
-  width: 120px;
+  width: 150px;
+  height: 20px;
   text-align: center;
   cursor: pointer;
+  .exit {
+    padding-top: 5px;
+    border-radius: 4px;
+    height: 25px;
+    line-height: 25px;
+    display: none;
+    text-align: end;
+    padding-right: 5px;
+    user-select: none;
+    &:hover {
+      background-color: rgba($color: #000000, $alpha: 0.2);
+    }
+  }
+  &:hover .exit {
+    display: block;
+  }
 }
 </style>

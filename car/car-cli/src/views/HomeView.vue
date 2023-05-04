@@ -70,6 +70,7 @@
           免维护木屋房车
         </div>
       </div>
+
       <div class="pic">
         <div>
           <img src="@/assets/home/pro1.jpg" alt="" />
@@ -107,30 +108,50 @@
         ><h1 style="color: #5cb95f">营地房车成功案例</h1></el-divider
       >
     </div>
-    <div class="block">
-      <el-carousel trigger="click">
-        <el-carousel-item v-for="(item, i) in pic" :key="i">
-          <img :src="item" alt="" />
-        </el-carousel-item>
-      </el-carousel>
+    <div class="success">
+      <div class="box">
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div
+              class="swiper-slide"
+              v-for="(item, i) in card"
+              :key="i"
+              @click="$router.push(`success-deta/${item.sid}`)"
+            >
+              <div class="pic">
+                <img :src="require('@/assets/success/' + item.pic1)" alt="" />
+              </div>
+              <p>{{ item.title }}</p>
+            </div>
+          </div>
+          <div class="swiper-button-prev swiper-button-white"></div>
+          <div class="swiper-button-next swiper-button-white"></div>
+        </div>
+      </div>
     </div>
-
     <!-- 营地房车新闻资讯 -->
     <div class="new">
       <el-divider content-position="center"
         ><h1 style="color: #5cb95f">营地房车新闻资讯</h1></el-divider
       >
       <div class="center">
-        <div class="pic">
+        <div class="pic" @click="$router.push(`newsdetail/1`)">
           <img src="@/assets/home/new1.jpg" alt="" />
           <p>8大类型房车营地，总有一款适合你！</p>
         </div>
         <div class="right">
-          <div class="item" v-for="(item, i) in news" :key="i">
-            <div class="time">{{ item.time.split('-')[0] }}</div>
+          <div
+            class="item"
+            v-for="(item, i) in news"
+            :key="i"
+            v-show="item.nid > 1 && item.nid < 5"
+          >
+            <div class="time">{{ item.ntime.split('-')[2] }}</div>
             <div class="text">
-              <h4>{{ item.text }}</h4>
-              <p>{{ item.content }}</p>
+              <h4 class="h4" @click="$router.push(`newsdetail/${item.nid}`)">
+                {{ item.title }}
+              </h4>
+              <p>{{ item.text }}</p>
             </div>
           </div>
         </div>
@@ -161,7 +182,6 @@ import 'swiper/dist/css/swiper.min.css'
 import Swiper from 'swiper'
 import GoTop from '../components/GoTop.vue'
 import httpApi from '../http/index'
-import pubsub from 'pubsub-js'
 export default {
   data() {
     return {
@@ -173,14 +193,7 @@ export default {
         require('@/assets/home/ban4.jpg'),
       ],
       card: [],
-      news: [
-        {
-          time: '11-2022-01',
-          text: '第二批5C、4C级自驾车旅居车营地名单公示',
-          content:
-            '依据《自驾车旅居车营地质量等级划分》行业标准及认定细则，中国旅游车船协会2021年在全国范围内开展了自驾车旅居车营地质量等级认定工作。现将第二..',
-        },
-      ],
+      news: {},
       partner: [
         require('@/assets/home/par1.jpg'),
         require('@/assets/home/par2.jpg'),
@@ -211,9 +224,11 @@ export default {
   mounted() {
     // 首页成功案例
     httpApi.successApi.homepic().then(res => {
-      // console.log(res);
       this.card = res.data.data
-      // console.log(this.card)
+    })
+    // 新闻资讯
+    httpApi.newsApi.home().then(res => {
+      this.news = res.data.data
     })
   },
   created() {},
@@ -281,6 +296,8 @@ export default {
       background-color: #f2f2f2;
       margin-right: 10px;
       width: 186px;
+      user-select: none;
+      cursor: pointer;
       &:hover {
         background-color: #7a7a7a;
         color: #fff;
@@ -300,6 +317,7 @@ export default {
     display: flex;
     justify-content: center;
     margin-top: 60px;
+
     .btn {
       width: 170px;
       height: 48px;
@@ -311,9 +329,13 @@ export default {
       line-height: 48px;
       user-select: none;
       cursor: pointer;
+      &:hover {
+        background-color: rgba($color: #000, $alpha: 0.1);
+      }
     }
   }
   .pic {
+    user-select: none;
     display: flex;
     div {
       width: 290px;
@@ -396,8 +418,9 @@ export default {
   .center {
     display: flex;
     margin-top: 60px;
+
     .pic {
-      width: 63%;
+      width: 100%;
       margin-right: 50px;
       img {
         width: 100%;
@@ -406,9 +429,12 @@ export default {
         color: #5c5c5c;
         font-size: 16px;
         margin-top: 10px;
+        user-select: none;
+        cursor: pointer;
       }
     }
     .right {
+      user-select: none;
       .item {
         display: flex;
         border-bottom: 1px dotted #d1d1d1;
@@ -423,6 +449,9 @@ export default {
           margin-right: 20px;
           flex-shrink: 0;
         }
+        .h4 {
+          cursor: pointer;
+        }
         .text {
           h4 {
             font-weight: 400;
@@ -434,6 +463,11 @@ export default {
             font-size: 12px;
             margin-top: 10px;
             color: #767676;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 2;
           }
         }
       }
@@ -445,6 +479,8 @@ export default {
     text-align: center;
     line-height: 36px;
     margin-top: 10px;
+    // user-select: none;
+    cursor: pointer;
   }
 }
 .partner {

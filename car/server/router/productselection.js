@@ -69,7 +69,7 @@ router.get('/type', async (req, res) => {
 // 列表详情
 router.get('/list-detail', (req, res) => {
   let obj = req.query
-  console.log('obj', obj.id)
+  console.log('obj', obj)
   let sql = 'select * from PROSET_DETAIL where tid = ?'
   pool.query(sql, [obj.id], (error, result) => {
     if (error) {
@@ -81,15 +81,15 @@ router.get('/list-detail', (req, res) => {
 })
 
 // 查询所有产品选购名称
-//http://localhost:3001/proset/title 
-router.get('/title',(req,res,next)=>{
-let sql='select title from CAR_PROSET'
-pool.query(sql,(err,r)=>{
-  if(err){
-    return next(err)
-  }
-  res.send({ code: 200, msg: "选购名称", data: r });
-})
+//http://localhost:3001/proset/title
+router.get('/title', (req, res, next) => {
+  let sql = 'select title from CAR_PROSET'
+  pool.query(sql, (err, r) => {
+    if (err) {
+      return next(err)
+    }
+    res.send({ code: 200, msg: '选购名称', data: r })
+  })
 })
 
 module.exports = router

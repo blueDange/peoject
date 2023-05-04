@@ -9,33 +9,40 @@
     <!-- 主体内容 -->
     <div class="content">
       <h1>露营地房车最新新闻资讯</h1>
-      <div class="cont1">
+      <div
+        class="cont1"
+        v-for="(item, i) in lists.data"
+        :key="i"
+        @click="$router.push(`newsdetail/${item.nid}`)"
+      >
         <div class="c-left">
-            <div class="l-time">
-              <p>14</p>
-              
-              <span>2020-01-14</span>
-            </div>
-            <img src="http://www.maichelive.com/uploads/litimg/news/220113.jpg" alt="">
+          <div class="l-time">
+            <p>14</p>
+            <span>2020-01-14</span>
+          </div>
+          <img :src="require('@/assets/news/' + item.pic)" alt="" />
         </div>
         <div class="c-right">
           <div>
-            <a href="">8大类型房车营地，总有一款适合你！</a>
-            <span>浏览：167次</span>
-            <p>如果说房车是移动的家，那么，房车营地就是移动之家的停靠港湾。 什么是房车营地？ 房车营地是指为房车旅游提供车辆停泊、住宿、餐饮以及休闲娱乐等服务的场所。房车营地内除...</p>
+            <a href="">{{ item.title }}</a>
+            <span>浏览：{{ item.browse }}次</span>
+            <p>{{ item.text }}</p>
           </div>
           <div>
-            <a href="">查看详情</a>
+            <a>查看详情</a>
           </div>
         </div>
       </div>
       <div class="c-line"></div>
       <el-pagination
-  background
-  small
-  layout="prev, pager, next"
-  :total="50">
-</el-pagination>
+        background
+        layout="->,prev, pager, next"
+        :total="lists.total"
+        :page-size="lists.pagesize"
+        :current-page="lists.pno"
+        @current-change="pageChange"
+      >
+      </el-pagination>
     </div>
     <!-- 页脚 -->
     <foot></foot>
@@ -49,12 +56,32 @@ import CarHead from "../../components/CarHead.vue";
 import NavMenu from "../../components/NavMenu";
 import Foot from "../../components/Foot.vue";
 import GoTop from "../../components/GoTop.vue";
+import httpApi from "../../http";
 export default {
+  data() {
+    return {
+      lists: {},
+    };
+  },
   components: {
     CarHead,
     NavMenu,
     Foot,
     GoTop,
+  },
+  methods: {
+    pageChange(pno) {
+      httpApi.newsApi.list({ pno: pno, count: 5 }).then((res) => {
+        console.log(res);
+        this.lists = res.data;
+      });
+    },
+  },
+  mounted() {
+    httpApi.newsApi.list({ pno: 1, count: 5 }).then((res) => {
+      console.log(res);
+      this.lists = res.data;
+    });
   },
 };
 </script>
@@ -70,43 +97,43 @@ export default {
     font-weight: normal;
     margin: 60px 0;
   }
-  >.cont1{
+  > .cont1 {
     display: flex;
-    border-bottom: 1px dashed #545454;
+    border-bottom: 1px dashed #cdcdcd;
     padding-bottom: 30px;
-    >.c-left{
+    margin-bottom: 30px;
+    > .c-left {
       display: flex;
-     
-      >.l-time{
+
+      > .l-time {
         margin: 50px 50px;
         display: flex;
         flex-direction: column;
         width: 120px;
         height: 31px;
-        
-        p{
-        padding-bottom: 10px;
-        font-weight: bold;
-        text-align: center;
-        font-size: 31px;
-        color: black;
-        border-bottom: 1px solid #838383;
-       
+
+        p {
+          padding-bottom: 10px;
+          font-weight: bold;
+          text-align: center;
+          font-size: 31px;
+          color: black;
+          border-bottom: 1px solid #838383;
+        }
+
+        span {
+          padding-top: 20px;
+          font-size: 12px;
+          text-align: center;
+        }
       }
-      
-      span{
-        padding-top: 20px;
-        font-size: 12px;
-        text-align: center;
-      }
-      }
-      
-      img{
+
+      img {
         width: 300px;
         height: 180px;
       }
     }
-    >.c-right{
+    > .c-right {
       padding-left: 50px;
       width: 680px;
       height: 180px;
@@ -114,52 +141,56 @@ export default {
       flex-direction: column;
       justify-content: space-between;
 
-     div:first-child{
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 100px;
-      a{
-        color: #545454;
-        font-size: 16px;
-         &:hover{
-        color: lightgreen;
-      }
-      }
-     
-     }
-     div:last-child{
-      width: 146px;
-      height: 40px;
-      border: 1px solid #545454;
-      display: flex;
-      justify-content: center;     
-      align-items: center;
-      &:hover{
-        background-color: #777;
-        a{
-          color: white;
+      div:first-child {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 100px;
+        p {
+          overflow: hidden;
+          -webkit-line-clamp: 2;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-box-orient: vertical;
         }
-        
+        a {
+          color: #545454;
+          font-size: 16px;
+          &:hover {
+            color: #38b549;
+          }
+        }
       }
-      
-      a{
-        color: #545454;
-       
+      div:last-child {
+        width: 146px;
+        height: 40px;
+        border: 1px solid #545454;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        &:hover {
+          background-color: #777;
+          a {
+            color: white;
+          }
+        }
+
+        a {
+          color: #545454;
+        }
       }
-     }
     }
   }
-  >.c-line{
+  > .c-line {
     padding-bottom: 50px;
   }
   > div {
     color: #777;
     font-size: 14px;
-    >p{
-        margin-bottom: 15px;
-        line-height: 23px;
-        text-indent: 2em;
+    > p {
+      margin-bottom: 15px;
+      line-height: 23px;
+      text-indent: 2em;
     }
   }
 }

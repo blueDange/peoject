@@ -10,7 +10,7 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style lang="scss" scoped>
@@ -19,6 +19,7 @@ export default {};
   width: 50px;
   height: 50px;
   &:hover {
+    user-select: none;
     background-color: #5cb95f;
   }
   .backtop {
