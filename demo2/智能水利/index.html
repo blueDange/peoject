@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1.0, user-scalable=no, width=device-width"
+    />
+    <title>看板</title>
+    <link rel="stylesheet" type="text/css" href="./static/css/reset.css" />
+    <link rel="stylesheet" type="text/css" href="./static/css/scanboard.css" />
+    <link rel="stylesheet" type="text/css" href="./static/css/animsition.css" />
+    <link rel="stylesheet" href="./static/css/demo-center.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="./static/css/jquery.shCircleLoader.css"
+    />
+    <script type="text/javascript" src="./static/js/jquery.min.js"></script>
+    <script
+      type="text/javascript"
+      src="./static/js/jquery.shCircleLoader-min.js"
+    ></script>
+  </head>
+  <body>
+    <div id="loader"></div>
+    <script type="text/javascript">
+      $("#loader").shCircleLoader({ color: "#00deff" });
+    </script>
+    <!--Top Start!-->
+    <div class="scanboardWp animsition">
+      <div id="top">
+        <div class="top-wp clearfix summaryBtn">
+          <div class="left pageTit"></div>
+          <div class="center topLogo">
+            <img src="./static/images/header-title.png" />
+          </div>
+          <div class="right topBar">
+            <div class="clearfix">
+              <img src="./static/images/head.png" alt="" />
+              <div class="company fr">
+                <div>
+                  <h3>admin</h3>
+                  <p class="number">13588815250</p>
+                </div>
+                <div class="arrow-img arrow-img-only"></div>
+                <div class="dropdown">
+                  <a href="login.html">退出登录</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Top End!-->
+
+      <!--Main Start!-->
+      <div id="main" class="wp clearfix">
+        <div class="left">
+          <!--圩区实况-->
+          <div class="item item-box-top">
+            <div class="header-boxT">
+              <div class="itemTit">
+                <div class="left">
+                  <div class="arrow-img"></div>
+                  <span>圩区实况</span>
+                </div>
+                <div class="right-select">
+                  <select name="" id="select1" class="selectOne">
+                    <option value="">彭墩西圩区</option>
+                    <option value="">彭墩西圩区</option>
+                    <option value="">彭墩西圩区</option>
+                    <option value="">彭墩西圩区</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="left-box-top">
+              <div class="reaily-top-box">
+                <div class="content-left-box">
+                  <img src="./static/images/m.png" alt="" />
+                  <div class="font-box">
+                    <div class="font">
+                      3492
+                      <p>亩</p>
+                    </div>
+                    <div class="bottom-title">保护面积</div>
+                  </div>
+                </div>
+                <div class="content-left-box">
+                  <img src="./static/images/water2.png" alt="" />
+                  <div class="font-box">
+                    <div class="font">
+                      27
+                      <p>个</p>
+                    </div>
+                    <div class="bottom-title">泵站数量</div>
+                  </div>
+                </div>
+              </div>
+              <div class="reaily-bottom-box">
+                <div class="content-left-box">
+                  <img src="./static/images/phone.png" alt="" />
+
+                  <div class="font-box">
+                    <div class="font">
+                      191
+                      <p>KW</p>
+                    </div>
+                    <div class="bottom-title">总装机容量</div>
+                  </div>
+                </div>
+                <div class="content-left-box">
+                  <img src="./static/images/water.png" alt="" />
+                  <div class="font-box">
+                    <div class="font">
+                      4.66
+                      <p>m3/s</p>
+                    </div>
+                    <div class="bottom-title">总装机流量</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--能耗统计-->
+          <div class="item item-box">
+            <div class="header-box">
+              <div class="itemTit">
+                <div class="left">
+                  <div class="arrow-img"></div>
+                  <span>能耗统计</span>
+                </div>
+              </div>
+            </div>
+            <div class="left-box" id="Energy"></div>
+          </div>
+
+          <!--开泵记录-->
+          <div class="item item-box">
+            <div class="header-boxC">
+              <div class="itemTit">
+                <div class="left">
+                  <div class="arrow-img"></div>
+                  <span>开泵记录</span>
+                </div>
+                <div class="right-select">
+                  <select name="" id="select2" class="selectOne">
+                    <option value="">彭墩西圩区</option>
+                    <option value="">彭墩西圩区</option>
+                    <option value="">彭墩西圩区</option>
+                    <option value="">彭墩西圩区</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="left-box">
+              <div class="item billState">
+                <div class="itemCon">
+                  <div class="StateBox">
+                    <div
+                      class="StateTit"
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                      "
+                    >
+                      <span
+                        class="textColor1 textColor"
+                        style="width: 30%; font-size: 12px !important"
+                        >开泵时间</span
+                      >
+                      <span
+                        class="textColor2 textColor"
+                        style="width: 35%; font-size: 12px !important"
+                        >泵房名称</span
+                      >
+                      <span
+                        class="textColor3 textColor"
+                        style="width: 15%; font-size: 12px !important"
+                        >开启方式</span
+                      >
+                      <span
+                        class="textColor4 textColor"
+                        style="width: 15%; font-size: 12px !important"
+                        >开机水位</span
+                      >
+                    </div>
+                    <div id="FontScrollTwo">
+                      <div class="inner-container">
+                        <div class="ul-box">
+                      <div
+                      class="FontColor"
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        color: #fff;
+                        margin-top: 10px;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                      "
+                    >
+                      <div class="FontColor-part FontColor-part1">
+                        2022-12-15 09:16:26
+                      </div>
+                      <div class="FontColor-part FontColor-part2">
+                        安木桥闸1号水泵
+                      </div>
+                      <div class="FontColor-part FontColor-part3">
+                        网络服务
+                      </div>
+                      <div
+                        class="FontColor-part FontColor-part4"
+                        style="margin-right: 11px"
+                      >
+                        120
+                      </div>
+                    </div>
+                    <div
+                      class="FontColor"
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        color: #fff;
+                        margin-top: 10px;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                      "
+                    >
+                      <div class="FontColor-part FontColor-part1">
+                        2022-12-15 09:16:26
+                      </div>
+                      <div class="FontColor-part FontColor-part2">
+                        安木桥闸1号水泵
+                      </div>
+                      <div class="FontColor-part FontColor-part3">
+                        网络服务
+                      </div>
+                      <div
+                        class="FontColor-part FontColor-part4"
+                        style="margin-right: 11px"
+                      >
+                        120
+                      </div>
+                    </div>
+                    <div
+                      class="FontColor"
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        color: #fff;
+                        margin-top: 10px;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                      "
+                    >
+                      <div class="FontColor-part FontColor-part1">
+                        2022-12-15 09:16:26
+                      </div>
+                      <div class="FontColor-part FontColor-part2">
+                        安木桥闸1号水泵
+                      </div>
+                      <div class="FontColor-part FontColor-part3">
+                        网络服务
+                      </div>
+                      <div
+                        class="FontColor-part FontColor-part4"
+                        style="margin-right: 11px"
+                      >
+                        120
+                      </div>
+                    </div>
+                    <div
+                      class="FontColor"
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        color: #fff;
+                        margin-top: 10px;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                      "
+                    >
+                      <div class="FontColor-part FontColor-part1">
+                        2022-12-15 09:16:26
+                      </div>
+                      <div class="FontColor-part FontColor-part2">
+                        安木桥闸1号水泵
+                      </div>
+                      <div class="FontColor-part FontColor-part3">
+                        网络服务
+                      </div>
+                      <div
+                        class="FontColor-part FontColor-part4"
+                        style="margin-right: 11px"
+                      >
+                        120
+                      </div>
+                    </div>
+                    <div
+                      class="FontColor"
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        color: #fff;
+                        margin-top: 10px;
+                        padding: 0 10px;
+                        box-sizing: border-box;
+                      "
+                    >
+                      <div class="FontColor-part FontColor-part1">
+                        2022-12-15 09:16:26
+                      </div>
+                      <div class="FontColor-part FontColor-part2">
+                        安木桥闸1号水泵
+                      </div>
+                      <div class="FontColor-part FontColor-part3">
+                        网络服务
+                      </div>
+                      <div
+                        class="FontColor-part FontColor-part4"
+                        style="margin-right: 11px"
+                      >
+                        120
+                      </div>
+                    </div>
+                          <!-- <ul>
+                        <li>
+                          <div class="fontInner clearfix span-box">
+                            <span>2022-12-15 09:16:26</span>
+                            <span>安木桥闸1号水泵</span>
+                            <span>网络服务</span>
+                            <span>120</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="fontInner clearfix span-box">
+                            <span>2022-12-15 09:16:26</span>
+                            <span>安木桥闸1号水泵</span>
+                            <span>网络服务</span>
+                            <span>120</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="fontInner clearfix span-box">
+                            <span>2022-12-15 09:16:26</span>
+                            <span>安木桥闸1号水泵</span>
+                            <span>网络服务</span>
+                            <span>120</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="fontInner clearfix span-box">
+                            <span>2022-12-15 09:16:26</span>
+                            <span>安木桥闸1号水泵</span>
+                            <span>网络服务</span>
+                            <span>120</span>
+                          </div>
+                        </li>
+                        <li>
+                          <div class="fontInner clearfix span-box">
+                            <span>2022-12-15 09:16:26</span>
+                            <span>安木桥闸1号水泵</span>
+                            <span>网络服务</span>
+                            <span>120</span>
+                          </div>
+                        </li>
+                      </ul> -->
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="center">
+          <div class="centerWp">
+            <!--中间大地图-->
+            <div class="mapContainer">
+              <div class="center-select">
+                <div class="right-select-map right-select-center-map">
+                  <div>
+                    <p
+                      style="
+                        width: 48px;
+                        height: 19px;
+                        font-size: 14px;
+                        color: #28eef9;
+                      "
+                    >
+                      区域:
+                    </p>
+                    <select name="" id="select3" class="selectTwo">
+                      <option value="">彭墩</option>
+                      <option value="">彭墩</option>
+                      <option value="">彭墩</option>
+                      <option value="">彭墩</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="right-select-map right-select-center-map">
+                  <div>
+                    <p
+                      style="
+                        width: 48px;
+                        height: 19px;
+                        font-size: 14px;
+                        color: #28eef9;
+                      "
+                    >
+                      年度:
+                    </p>
+                    <select name="" id="select4" class="selectTwo">
+                      <option value="">2010</option>
+                      <option value="">2011</option>
+                      <option value="">2012</option>
+                      <option value="">2013</option>
+                      <option value="">2014</option>
+                      <option value="">2015</option>
+                      <option value="">2016</option>
+                      <option value="">2017</option>
+                      <option value="">2018</option>
+                      <option value="">2019</option>
+                      <option value="">2020</option>
+                      <option value="">2021</option>
+                      <option value="">2022</option>
+                      <option value="">2023</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="gate-box">
+                <div class="dot-box dot-box1">
+                  <div class="dot">
+                    <img
+                      src="./static/images/s_icon4z.png"
+                      style="width: 20px; height: 24px"
+                      alt=""
+                    />
+                  </div>
+                  <div class="dot-title">闸口</div>
+                  <div style="color: #fff; margin-left: 10px">(54)</div>
+                </div>
+                <div class="dot-box dot-box2">
+                  <div class="dot">
+                    <img
+                      src="./static/images/s_icon4s.png"
+                      style="width: 20px; height: 24px"
+                      alt=""
+                    />
+                  </div>
+                  <div class="dot-title">水利</div>
+                  <div style="color: #fff; margin-left: 10px">(54)</div>
+                </div>
+                <div class="dot-box dot-box3">
+                  <div class="dot">
+                    <img
+                      src="./static/images/s_icon4j.png"
+                      style="width: 20px; height: 24px"
+                      alt=""
+                    />
+                  </div>
+                  <div class="dot-title">机房</div>
+                  <div style="color: #fff; margin-left: 10px">(54)</div>
+                </div>
+                <div class="dot-box dot-box4">
+                  <div class="dot">
+                    <img
+                      src="./static/images/s_icon4h.png"
+                      style="width: 20px; height: 24px"
+                      alt=""
+                    />
+                  </div>
+                  <div class="dot-title">环境</div>
+                  <div style="color: #fff; margin-left: 10px">(54)</div>
+                </div>
+              </div>
+              <div class="btnLayer"></div>
+              <div id="myMap" class="item item-box"></div>
+            </div>
+
+            <!--月运单量统计图-->
+            <div class="billChart">
+              <div class="header-box water-header-box">
+                <div class="itemTit">
+                  <div class="left">
+                    <div class="arrow-img"></div>
+                    <span>排水量统计</span>
+                  </div>
+                  <div class="right-select right-select-only">
+                    <select name="" id="select5" class="selectOne">
+                      <option value="">彭墩西圩区</option>
+                      <option value="">彭墩西圩区</option>
+                      <option value="">彭墩西圩区</option>
+                      <option value="">彭墩西圩区</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div id="myChart1"></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right">
+          <div class="item item-box-right">
+            <div class="header-box">
+              <div class="itemTit">
+                <div class="left">
+                  <div class="arrow-img"></div>
+                  <span>圩区运行分析</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-box">
+              <div id="equipment2"></div>
+              <div class="details">
+                <div class="details-top">
+                  <div class="dot-box">
+                    <div class="dot"></div>
+                    <div class="dot-title">运行中</div>
+                  </div>
+                  <div class="detail-box">
+                    <div>5467</div>
+                    <div>亩</div>
+                    <div class="num-box1">87%</div>
+                  </div>
+                </div>
+                <div class="details-top">
+                  <div class="dot-box">
+                    <div class="dot dot1"></div>
+                    <div class="dot-title">待机中</div>
+                  </div>
+                  <div class="detail-box">
+                    <div>425</div>
+                    <div>亩</div>
+                    <div class="num-box">13%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--各阶段平均用时统计-->
+          <div class="item item-box-right">
+            <div class="header-box">
+              <div class="itemTit">
+                <div class="left">
+                  <div class="arrow-img"></div>
+                  <span>设备运行分析</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-box">
+              <div id="equipment1"></div>
+              <div class="details">
+                <div class="details-top">
+                  <div class="dot-box">
+                    <div class="dot dot1"></div>
+                    <div class="dot-title">运行中</div>
+                  </div>
+                  <div class="detail-box">
+                    <div>67</div>
+                    <div>个</div>
+                    <div class="num-box2">87%</div>
+                  </div>
+                </div>
+                <div class="details-top">
+                  <div class="dot-box">
+                    <div class="dot dot3"></div>
+                    <div class="dot-title">待机中</div>
+                  </div>
+                  <div class="detail-box">
+                    <div>5</div>
+                    <div>个</div>
+                    <div class="num-box3">13%</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--告警记录-->
+          <div class="item item-box-right">
+            <div class="header-boxC">
+              <div class="itemTit">
+                <div class="left">
+                  <div class="arrow-img"></div>
+                  <span>告警记录</span>
+                </div>
+              </div>
+            </div>
+            <div class="right-box">
+              <div class="item billState">
+                <div class="itemCon">
+                  <div class="StateBox">
+                    <div
+                      class="StateTit"
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                      "
+                    >
+                      <span class="textColor">告警时间</span>
+                      <span class="textColor">告警描述</span>
+                      <span class="textColor set">操作</span>
+                    </div>
+                    <div id="FontScroll">
+                      <div class="inner-container">
+                        <ul class="ul-box">
+                          <li>
+                            <div class="fontInner clearfix">
+                              <span>2022-12-15 09:16:26</span>
+                              <span>安木桥闸1号水泵告警</span>
+                              <span class="look">查看</span>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="fontInner clearfix">
+                              <span>2022-12-15 09:16:26</span>
+                              <span>安木桥闸1号水泵告警</span>
+                              <span class="look">查看</span>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="fontInner clearfix">
+                              <span>2022-12-15 09:16:26</span>
+                              <span>安木桥闸1号水泵告警</span>
+                              <span class="look">查看</span>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="fontInner clearfix">
+                              <span>2022-12-15 09:16:26</span>
+                              <span>安木桥闸1号水泵告警</span>
+                              <span class="look">查看</span>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="fontInner clearfix">
+                              <span>2022-12-15 09:16:26</span>
+                              <span>安木桥闸1号水泵告警</span>
+                              <span class="look">查看</span>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!--运单状态-->
+        </div>
+      </div>
+      <!--Main End!-->
+    </div>
+
+    <div class="filterbg"></div>
+    <div class="popup">
+      <a href="javascript:;" class="popupClose"></a>
+      <div class="detailMain">
+        <div class="detailTitle">
+          <div>闸口详情</div>
+        </div>
+        <div class="detailContain">
+          <div class="detailContainLeft">
+            <div class="detailContainLeft-top">
+              <div>
+                <img src="./static/images/detail1.png" alt="" />
+              </div>
+              <div>
+                <img src="./static/images/detail2.png" alt="" />
+              </div>
+              <div>
+                <img src="./static/images/detail3.png" alt="" />
+              </div>
+            </div>
+            <div class="detailContainLeft-middle">
+              <div>
+                <img src="./static/images/detail4.png" alt="" />
+              </div>
+              <div>
+                <img src="./static/images/detail5.png" alt="" />
+              </div>
+              <div>
+                <img src="./static/images/detail6.png" alt="" />
+              </div>
+            </div>
+            <div class="detailContainLeft-bottom">
+              <div>
+                <img src="./static/images/detail7.png" alt="" />
+              </div>
+              <div>
+                <img src="./static/images/detail8.png" alt="" />
+              </div>
+              <div>
+                <img src="./static/images/detail9.png" alt="" />
+              </div>
+            </div>
+          </div>
+          <div class="detailContainRight">
+            <div class="detailRightLocalInfo">北栅口闸</div>
+            <div class="detailRightCustom">客户: 海宁袁花圩区</div>
+            <div class="detailRightLongitude">经纬度: 23432,23 324325,32</div>
+            <div class="waterPump">
+              <div class="waterPumpBg">
+                <img src="./static/images/waterPump.png" />
+              </div>
+              <div class="waterPump-describe">
+                <div>水泵1</div>
+                <div>电压: 410V</div>
+              </div>
+            </div>
+            <div class="waterPump">
+              <div class="waterPumpBg">
+                <img src="./static/images/waterPump.png" />
+              </div>
+              <div class="waterPump-describe">
+                <div>水泵2</div>
+                <div>电压: 410V</div>
+              </div>
+            </div>
+            <div class="waterPump">
+              <div class="waterPumpBg">
+                <img src="./static/images/gateDetailGate.png" />
+              </div>
+              <div class="waterPump-describe">
+                <div>闸门</div>
+                <div>闸门开度: 480cm</div>
+              </div>
+            </div>
+            <div id="EnergyConsumption" class="EnergyConsumption"></div>
+            <div id="displacement" class="displacement"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script type="text/javascript" src="./static/js/scanboard.js"></script>
+  <script type="text/javascript" src="./static/js/fontscroll.js"></script>
+  <script
+    type="text/javascript"
+    src="./static/js/jquery.animsition.js"
+  ></script>
+  <script
+    type="text/javascript"
+    src="./static/js/jquery.nicescroll.js"
+  ></script>
+  <script type="text/javascript" src="./static/js/echarts.min.js"></script>
+  <script
+    type="text/javascript"
+    src="https://webapi.amap.com/maps?v=2.0&key=272094ce4a6844db4a7359b03f42cf34"
+  ></script>
+</html>
