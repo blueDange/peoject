@@ -125,13 +125,11 @@ export default {
     // 页面加载时加载所有列表
     this.typeList(this.type)
     pubsub.subscribe('typeChange', (_, b) => {
-      // 消息订阅-类型
+      // 消息订阅-类型 //! 获取从另一个页面传递过来的参数进行模糊查询
       this.type = parseInt(b)
       console.log('收到消息', this.type)
       this.list.pno = 1
       this.typeList(this.type)
-      // console.log('type', this.type)
-      // this.type = 0
     })
     //! 从主页跳转过来
     let hometype = this.$route.query.hometype
